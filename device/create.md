@@ -12,7 +12,7 @@ URL: http://v1.0/devices
 
 ### Header
 
-apiKey:YOUR\_API\_KEY\_HERE
+apiKey:`YOUR\_API\_KEY\_HERE`
 
 ### Body
 
