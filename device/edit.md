@@ -6,27 +6,11 @@ Use HTTP PUT to request for a device edit
 
 ## Syntax
 
-URL: http:///v1.0/devices/
+URL: http://v1.0/devices/
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Qualified | Mandatory | Type | Description |
 | --- | --- | --- | --- |
 |  | Yes | String | Device\_id |
 
@@ -42,23 +26,7 @@ apiKey:YOUR\_API\_KEY\_HERE
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Field Name | Mandatory | Type | Description |
 | --- | --- | --- | --- |
 | title | Yes | String | Device name |
 | desc | No | String | Device description |
@@ -83,19 +51,7 @@ PUT
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Field Name | Type | Description |
 | --- | --- | --- |
 | RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
 
@@ -116,3 +72,5 @@ Need to add API key in HTTP Header for authentication
 Curl ¡Vrequest PUT ¡Vdata-binary @datafile.txt ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http:///v1.0/devices/
 
 ## See Also
+
+

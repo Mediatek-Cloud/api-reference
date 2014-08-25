@@ -6,7 +6,7 @@ Use HTTP POST to request for a device creation
 
 ## Syntax
 
-URL: http:///v1.0/devices
+URL: http://v1.0/devices
 
 ## Parameters
 
@@ -20,23 +20,7 @@ apiKey:YOUR\_API\_KEY\_HERE
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Field Name | Mandatory | Type |Description|
 | --- | --- | --- | --- |
 | title | Yes | String | Device name |
 | desc | No | String | Device description |

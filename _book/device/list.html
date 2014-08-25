@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="1.1" data-basepath=".." data-revision="1408933721741">
+    <div class="book"  data-level="1.1" data-basepath=".." data-revision="1408937565573">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -455,9 +455,65 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_257">
+                    <section class="normal" id="section-gitbook_478">
                     
-                        <h1 id="list">list</h1>
+                        <h1 id="device-list">Device List</h1>
+<h2 id="description">Description</h2>
+<p>Use HTTP GET to request for a device list</p>
+<h2 id="syntax">Syntax</h2>
+<p>URL: <a href="http://v1.0/devices" target="_blank">http://v1.0/devices</a></p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="header">Header</h3>
+<p>apiKey:YOUR_API_KEY_HERE</p>
+<h3 id="method">Method</h3>
+<p>GET</p>
+<h2 id="returns">Returns</h2>
+<p><strong>Format: JSON</strong></p>
+<p>returns a HTTP response with body text in JSON format, the fields return are:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RC</td>
+<td>Integer</td>
+<td>Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td>String</td>
+<td>Device ID</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Device name</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>String</td>
+<td>Device description</td>
+</tr>
+<tr>
+<td>location</td>
+<td>JSON</td>
+<td>geoname: string , latitude: float , longitude: float</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<p><strong>Sample JSON</strong></p>
+<pre><code>{ &quot;RC&quot; : 1000, { &quot;device_id&quot;: &quot;1234567890&quot;, &quot;title&quot;: &quot;test01&quot;, &quot;desc&quot;: &quot;device for testing&quot;, &quot;location&quot;: { &quot;geoname&quot; : &quot;Office1&quot;, &quot;latitude&quot; : &quot;24.940225&quot;, &quot;longitude&quot; : &quot;141.533913&quot;}},{ &quot;device_id&quot;: &quot;1234567891&quot; &quot;title&quot;: &quot;test02&quot;, &quot;desc&quot;: &quot;device for testing&quot;, &quot;location&quot;: { &quot;geoname&quot; : &quot;Office2&quot;, &quot;latitude&quot; : &quot;28.943203&quot;, &quot;longitude&quot; : &quot;131.501913&quot;}}}
+</code></pre><h2 id="authentication">Authentication</h2>
+<p>Need to add API key in HTTP Header for authentication</p>
+<h2 id="example-use-of-curl">Example (use of curl):</h2>
+<p>Curl ¡Vrequest GET ¡Vheader &quot;apiKey: YOUR_API_KEY_HERE&quot; <a href="http:///v1.0/devices" target="_blank">http:///v1.0/devices</a></p>
+<h2 id="see-also">See Also</h2>
 
                     
                     </section>

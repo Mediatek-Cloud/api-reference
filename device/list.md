@@ -6,7 +6,7 @@ Use HTTP GET to request for a device list
 
 ## Syntax
 
-URL: http:///v1.0/devices
+URL: http://v1.0/devices
 
 ## Parameters
 
@@ -24,19 +24,7 @@ GET
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name|Type |Description |
 | --- | --- | --- |
 | RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
 | device\_id | String | Device ID |

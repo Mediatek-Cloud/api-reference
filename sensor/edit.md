@@ -1,4 +1,3 @@
-
 # Sensor Edit
 
 ## Description
@@ -11,23 +10,7 @@ URL: http:///v1.0/devices//sensors/
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Qualified | Mandatory | Type | Description |
 | --- | --- | --- | --- |
 |  | Yes | String | Device Id |
 |  | Yes | String | Sensor Id |
@@ -83,23 +66,7 @@ Description
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Field Name | Mandatory | Type | Description |
 | --- | --- | --- | --- |
 | title | Yes | String | Sensor name |
 | desc | No | String | Sensor description |
@@ -125,19 +92,7 @@ PUT
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Field Name |Type | Description |
 | --- | --- | --- |
 | RC | Integer | Return Code |
 

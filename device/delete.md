@@ -6,27 +6,11 @@ Use HTTP DELETE to request for a device deletion
 
 ## Syntax
 
-URL: http:///v1.0/devices/
+URL: http://v1.0/devices/
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Qualified| Mandatory | Type | Description |
 | --- | --- | --- | --- |
 |  | Yes | String | Device\_id |
 
@@ -46,19 +30,7 @@ DELETE
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name|Type |Description |
 | --- | --- | --- |
 | RC | Integer | Return Code |
 

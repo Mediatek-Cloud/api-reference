@@ -10,23 +10,7 @@ URL: http:///v1.0/devices//sensors
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Qualified | Mandator | Type| Description |
 | --- | --- | --- | --- |
 |  | Yes | String | Device\_id |
 
@@ -46,23 +30,7 @@ There are three types of sensor: **Value** , **GPS** and **Generic** type:
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name|Mandatory|Type|Description|
 | --- | --- | --- | --- |
 | type | Yes | String | Sensor Type, set as "value" |
 | title | Yes | String | Sensor name |
@@ -82,23 +50,7 @@ Description
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name |Mandatory |Type |Description |
 | --- | --- | --- | --- |
 | type | Yes | String | Sensor Type, set as "gps" |
 | title | Yes | String | Sensor name |
@@ -160,19 +112,7 @@ POST
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name |Type |Description |
 | --- | --- | --- |
 | RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
 | sensor\_id | String | Sensor ID |
