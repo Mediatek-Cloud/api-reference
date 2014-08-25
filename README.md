@@ -11,7 +11,7 @@ LCloud also provides a web console to allow users to:
 - Manage for device and sensor profiles
 - Quick view on the DataPoint value over time chart for trends
 
-LCloud services are fully exposed as External RESTful Services API. LinkIt ONE and other devices capable of making RESTful API call can interact with LCloud.
+> LCloud services are fully exposed as External RESTful Services API. LinkIt ONE and other devices capable of making RESTful API call can interact with LCloud.
 
 LCloud services define Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). The model hierarchy and example is depicted as below:
 
