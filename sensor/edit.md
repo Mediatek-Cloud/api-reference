@@ -6,7 +6,7 @@ Use HTTP PUT to request for a sensor edit
 
 ## Syntax
 
-URL: http:///v1.0/devices//sensors/
+URL: http://v1.0/devices//sensors/
 
 Qualifier description:
 
@@ -19,7 +19,7 @@ Qualifier description:
 
 ### Header
 
-apiKey:YOUR\_API\_KEY\_HERE
+apiKey:`YOUR\_API\_KEY\_HERE`
 
 ### Body
 
@@ -31,23 +31,7 @@ There are three types of sensor: **Value** , **GPS** and **Generic** type:
 
 The body construct should be in JSON format with the following fields:
 
-|
-
-Field Name
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name|Mandatory|Type |Description |
 | --- | --- | --- | --- |
 | title | Yes | String | Sensor name |
 | desc | No | String | Sensor description |
@@ -110,6 +94,8 @@ Need to add API key in HTTP Header for authentication
 
 ## Example (use of curl):
 
-Curl ¡Vrequest PUT ¡Vdata-binary @datafile.txt ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http:///v1.0/devices//
+```
+$ Curl -request PUT -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//
+```
 
 ## See Also

@@ -70,7 +70,7 @@ Need to add API key in HTTP Header for authentication
 ## Example (use of curl):
 
 ```
-$ Curl ¡Vrequest PUT ¡Vdata-binary @datafile.txt ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http:///v1.0/devices/
+$ Curl -request PUT -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices/
 ```
 
 ## See Also

@@ -18,7 +18,7 @@ Qualifier description:
 
 ### Header
 
-apiKey:YOUR\_API\_KEY\_HERE
+apiKey:`YOUR\_API\_KEY\_HERE`
 
 ### Method
 
@@ -48,7 +48,9 @@ Need to add API key in HTTP Header for authentication
 
 ## Example (use of curl):
 
-Curl ¡Vrequest DELETE ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http:///v1.0/devices/
+```
+$ Curl -request DELETE -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices/
+```
 
 ## See Also
 

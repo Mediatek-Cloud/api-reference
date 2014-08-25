@@ -6,7 +6,7 @@ Use HTTP DELETE to request for a datapoint deletion
 
 ## Syntax
 
-URL: http:///v1.0/devices//sensors//datapoints/
+URL: http://v1.0/devices//sensors//datapoints/
 
 Qualifier description:
 
@@ -20,7 +20,7 @@ Qualifier description:
 
 ### Header
 
-apiKey:YOUR\_API\_KEY\_HERE
+apiKey:`YOUR\_API\_KEY\_HERE`
 
 ### Method
 
@@ -50,6 +50,8 @@ Need to add API key in HTTP Header for authentication
 
 ## Example (use of curl):
 
-Curl ¡Vrequest DELETE ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http:///v1.0/devices///datapoints/
+```
+$ Curl ¡Vrequest DELETE ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints/
+```
 
 ## See Also
