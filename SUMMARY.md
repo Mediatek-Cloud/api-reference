@@ -11,7 +11,7 @@
    * [Create](sensor/create.md)
    * [Edit](sensor/edit.md)
    * [Delete](sensor/delete.md)
-* [Datapoint](datapoint/README)
+* [Datapoint](datapoint/README.md)
    * [List](datapoint/list.md)
    * [Create](datapoint/create.md)
    * [MultiCreate](datapoint/multicreate.md)

@@ -16,23 +16,7 @@ URL: http:///v1.0/devices//sensors//datapoints
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Qualified |Mandatory |Type |Description |
 | --- | --- | --- | --- |
 |  | Yes | String | Device Id |
 |  | Yes | String | Sensor Id |
@@ -86,19 +70,7 @@ returns a HTTP response with body text in JSON format, the fields return are:
 
 **Generic Type Sensor**
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name |Type |Description |
 | --- | --- | --- |
 | RC | Integer | Return Code |
 | value | self-define | value |

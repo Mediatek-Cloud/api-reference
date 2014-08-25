@@ -11,23 +11,7 @@ URL: http:///v1.0/devices//sensors
 
 Qualifier description:
 
-|
-
-Qualified
-
- |
-
-Mandatory
-
- |
-
-Type
-
- |
-
-Description
-
- |
+| Qualified|Mandatory| Type| Description|
 | --- | --- | --- | --- |
 |  | Yes | String | Device Id |
 
@@ -47,19 +31,7 @@ GET
 
 returns a HTTP response with body text in JSON format, the fields return are:
 
-|
-
-Field Name
-
- |
-
-Type
-
- |
-
-Description
-
- |
+|Field Name|Type |Description |
 | --- | --- | --- |
 | RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
 | sensor\_id | String | Sensor Id |

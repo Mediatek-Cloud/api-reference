@@ -30,24 +30,21 @@ The actions interacting to each model:
 1. Users must be a MediaTek Development Network registered user.
 2. A registered and logged in user can access LCloud Sandbox Cloud console  to obtain its Apikey for RESTful Services access token.
 
-### Device
-
+Device:
 - Device Create
 - Device Delete
 - Device Edit
 - Device List
 - Device View
 
-### Sensor
-
+Sensor:
 - Sensor Create
 - Sensor Delete
 - Sensor Edit
 - Sensor List
 - Sensor View
 
-### DataPoint
-
+DataPoint:
 - DataPoint Create
 - DataPoint Delete
 - DataPoint Edit

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1408933721741">
+    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1408937565573">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -455,9 +455,92 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_261">
+                    <section class="normal" id="section-gitbook_482">
                     
-                        <h1 id="edit">Edit</h1>
+                        <h1 id="sensor-edit">Sensor Edit</h1>
+<h2 id="description">Description</h2>
+<p>Use HTTP PUT to request for a sensor edit</p>
+<h2 id="syntax">Syntax</h2>
+<p>URL: <a href="http:///v1.0/devices//sensors/" target="_blank">http:///v1.0/devices//sensors/</a></p>
+<p>Qualifier description:</p>
+<p>|</p>
+<p>Qualified</p>
+<p> |</p>
+<p>Mandatory</p>
+<p> |</p>
+<p>Type</p>
+<p> |</p>
+<p>Description</p>
+<p> |
+| --- | --- | --- | --- |
+|  | Yes | String | Device Id |
+|  | Yes | String | Sensor Id |</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="header">Header</h3>
+<p>apiKey:YOUR_API_KEY_HERE</p>
+<h3 id="body">Body</h3>
+<p><strong>Data Format: JSON</strong></p>
+<p>There are three types of sensor: <strong>Value</strong> , <strong>GPS</strong> and <strong>Generic</strong> type:</p>
+<p><strong>Value Type Sensor</strong></p>
+<p>The body construct should be in JSON format with the following fields:</p>
+<p>|</p>
+<p>Field Name</p>
+<p> |</p>
+<p>Mandatory</p>
+<p> |</p>
+<p>Type</p>
+<p> |</p>
+<p>Description</p>
+<p> |
+| --- | --- | --- | --- |
+| title | Yes | String | Sensor name |
+| desc | No | String | Sensor description |
+| tags | No | Array | Sensor tags |
+| unit | No | JSON | name: string, symbol: string |</p>
+<h4 id="example">Example:</h4>
+<p><strong>Sample JSON</strong></p>
+<pre><code>{ &quot;title&quot;: &quot;test01&quot;, &quot;desc&quot;: &quot;sensor for testing&quot;, &quot;tags&quot;: [&quot;sensor tag1&quot;, &quot;sensor tag2&quot;], &quot;unit&quot;: { &quot;name&quot; : &quot;temperature&quot;, &quot;symbol&quot; : &quot;C&quot;}}
+</code></pre><p><strong>GPS and Generic Type Sensor</strong></p>
+<p>The body construct should be in JSON format with the following fields:</p>
+<p>|</p>
+<p>Field Name</p>
+<p> |</p>
+<p>Mandatory</p>
+<p> |</p>
+<p>Type</p>
+<p> |</p>
+<p>Description</p>
+<p> |
+| --- | --- | --- | --- |
+| title | Yes | String | Sensor name |
+| desc | No | String | Sensor description |
+| tags | No | Array | Sensor tags |</p>
+<h4 id="example">Example:</h4>
+<p><strong>Sample JSON</strong></p>
+<pre><code>{ &quot;title&quot;: &quot;test01&quot;, &quot;desc&quot;: &quot;sensor for testing&quot;, &quot;tags&quot;: [&quot;sensor tag1&quot;, &quot;sensor tag2&quot;],}
+</code></pre><p>Please note: Sensor type cannot be changed once created</p>
+<h2 id="method">Method</h2>
+<p>PUT</p>
+<h2 id="returns">Returns</h2>
+<p><strong>Format: JSON</strong></p>
+<p>returns a HTTP response with body text in JSON format, the fields return are:</p>
+<p>|</p>
+<p>Field Name</p>
+<p> |</p>
+<p>Type</p>
+<p> |</p>
+<p>Description</p>
+<p> |
+| --- | --- | --- |
+| RC | Integer | Return Code |</p>
+<p><strong>Example:</strong></p>
+<p><strong>Sample JSON</strong></p>
+<pre><code>{ &quot;RC&quot; : 1000}
+</code></pre><h2 id="authentication">Authentication</h2>
+<p>Need to add API key in HTTP Header for authentication</p>
+<h2 id="example-use-of-curl">Example (use of curl):</h2>
+<p>Curl ¡Vrequest PUT ¡Vdata-binary @datafile.txt ¡Vheader &quot;apiKey: YOUR_API_KEY_HERE&quot; <a href="http:///v1.0/devices//" target="_blank">http:///v1.0/devices//</a></p>
+<h2 id="see-also">See Also</h2>
 
                     
                     </section>

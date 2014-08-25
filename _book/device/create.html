@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="1.2" data-basepath=".." data-revision="1408933721741">
+    <div class="book"  data-level="1.2" data-basepath=".." data-revision="1408937565573">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -455,45 +455,18 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_254">
+                    <section class="normal" id="section-gitbook_475">
                     
-                        <h1 id="datapoint-create">DataPoint Create</h1>
+                        <h1 id="device-create">Device Create</h1>
 <h2 id="description">Description</h2>
-<p>Use HTTP POST to request for a datapoint creation for a sensor</p>
+<p>Use HTTP POST to request for a device creation</p>
 <h2 id="syntax">Syntax</h2>
-<p>URL: <a href="http:///v1.0/devices//sensors//datapoints" target="_blank">http:///v1.0/devices//sensors//datapoints</a></p>
-<p>Qualifier description:</p>
-<table>
-<thead>
-<tr>
-<th>Qualified</th>
-<th>Mandatory</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>Yes</td>
-<td>String</td>
-<td>Device Id</td>
-</tr>
-<tr>
-<td></td>
-<td>Yes</td>
-<td>String</td>
-<td>Sensor Id</td>
-</tr>
-</tbody>
-</table>
+<p>URL: <a href="http://v1.0/devices" target="_blank">http://v1.0/devices</a></p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="header">Header</h3>
 <p>apiKey:YOUR_API_KEY_HERE</p>
 <h3 id="body">Body</h3>
 <p><strong>Data Format: JSON</strong></p>
-<p>There are three types of sensor: <strong>Value</strong> , <strong>GPS</strong> and <strong>Generic</strong> type:</p>
-<p><strong>Value Type Sensor</strong></p>
 <p>The body construct should be in JSON format with the following fields:</p>
 <table>
 <thead>
@@ -506,102 +479,32 @@
 </thead>
 <tbody>
 <tr>
-<td>timestamp</td>
-<td>Yes</td>
-<td>timestamp</td>
-<td>Key (timestamp is expressed according to ISO 8601 format</td>
-</tr>
-</tbody>
-</table>
-<p>2014-06-10T13:52:43+00:00 |
-| value | Yes | float | value |</p>
-<h4 id="example">Example:</h4>
-<p><strong>Sample JSON</strong></p>
-<pre><code>{&quot;timestamp&quot;:&quot;2014-03-15T16:13:14+08:00&quot;,&quot;value&quot;:294.34}
-</code></pre><p><strong>GPS Type Sensor</strong></p>
-<p>The body construct should be in JSON format with the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field Name</th>
-<th>Mandatory</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>timestamp</td>
-<td>Yes</td>
-<td>timestamp</td>
-<td>Key (timestamp is expressed according to ISO 8601 format</td>
-</tr>
-</tbody>
-</table>
-<p>2014-06-10T13:52:43+00:00 |
-| value | Yes | JSON | Lat: float Latitude Lng: float Longtitude Spd: float Speed Offs: float offset |</p>
-<h4 id="example">Example:</h4>
-<p><strong>Sample JSON</strong></p>
-<pre><code>{&quot;timestamp&quot;:&quot;2014-03-15T16:13:14+08:00&quot;,&quot;value&quot;:{&quot;lat&quot;:35.4567,&quot;lng&quot;:46.1234,&quot;spd&quot;:98.2}}{&quot;timestamp&quot;:&quot;2014-03-15T16:13:14+08:00&quot;,&quot;value&quot;:{&quot;lat&quot;:35.4567,&quot;lng&quot;:46.1234,&quot;spd&quot;:98.2,&quot;offs&quot;:&quot;yes&quot;}}
-</code></pre><p><strong>Generic Type Sensor</strong></p>
-<p>The body construct should be in JSON format with the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field Name</th>
-<th>Mandatory</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
+<td>title</td>
 <td>Yes</td>
 <td>String</td>
-<td>Key, maximum 128 char</td>
+<td>Device name</td>
 </tr>
 <tr>
-<td>value</td>
-<td>Yes</td>
-<td>Self-define</td>
-<td>Self-define, maximum 1024 char</td>
+<td>desc</td>
+<td>No</td>
+<td>String</td>
+<td>Device description</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>No</td>
+<td>Array</td>
+<td>Device tags</td>
+</tr>
+<tr>
+<td>location</td>
+<td>No</td>
+<td>JSON</td>
+<td>geoname:string /v1.0/devices</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example">Example:</h4>
-<p><strong>Sample JSON</strong></p>
-<pre><code>{&quot;key&quot;:&quot;ABCDEFG01&quot;,&quot;value&quot;:&quot;data log 01&quot;}
-</code></pre><p>Please note: One or more DataPoints can be created in one single HTTP POST</p>
-<h2 id="method">Method</h2>
-<p>POST</p>
-<h2 id="returns">Returns</h2>
-<p><strong>Format: JSON</strong></p>
-<p>returns a HTTP response with body text in JSON format, the fields return are:</p>
-<table>
-<thead>
-<tr>
-<th>Field Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>RC</td>
-<td>Integer</td>
-<td>Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example:</strong></p>
-<p><strong>Sample JSON</strong></p>
-<pre><code>{ &quot;RC&quot; : 1000}
-</code></pre><h2 id="authentication">Authentication</h2>
-<p>Need to add API key in HTTP Header for authentication</p>
-<h2 id="example-use-of-curl">Example (use of curl):</h2>
-<pre><code>Curl ¡Vrequest PUT ¡Vdata-binary @datafile.txt ¡Vheader &quot;apiKey: YOUR\_API\_KEY\_HERE&quot; http:///v1.0/devices///datapoints
-</code></pre><h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also</h2>
 
                     
                     </section>
