@@ -1,4 +1,4 @@
-# Sensor Create 123
+# Sensor Create
 
 ## Description
 
