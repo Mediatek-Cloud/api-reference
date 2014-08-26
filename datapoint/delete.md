@@ -51,7 +51,7 @@ Need to add API key in HTTP Header for authentication
 ## Example (use of curl):
 
 ```
-$ Curl ¡Vrequest DELETE ¡Vheader "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints/
+$ Curl -request DELETE -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints/
 ```
 
 ## See Also
