@@ -13,18 +13,25 @@ LCloud also provides a web console to allow users to:
 
 > LCloud services are fully exposed as External RESTful Services API. LinkIt ONE and other devices capable of making RESTful API call can interact with LCloud.
 
-LCloud services define Product, Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). The model hierarchy and example is depicted as below:
+LCloud services define Product, Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). Take a weather staion device as an example, the model hierarchy can be designed as below:
 
-![](https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/01.JPG)
+![](https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/data-hirachy.JPG)
+
+The sequence of creating a weather station device is to:
+
+1. Define a **PRODUCT** namely "Weather Station Model 01".
+2. Once the PROUDCT is created, we can create **DEVICE** within this specific PRODUCT, the relationship between PRODUCT and DEVICE is one to many.
+3. Once a DEVICE is created, we can create **SENSOR** within this specific DEVICE, the relationship between DEVICE and SENSOR is one to many.
+4. For this specific example, we create four SENSORS with this device, SENSOR is the placeholder for **DATAPOINTS** which represents the actual data we wish to store or retrieve.
 
 The actions interacting to each model:
 
 | Object| Action|
 | --- | --- |
-| Product| Create / Delete / Edit / List / View |
-| Device | Create / Delete / Edit / List / View |
-| Sensor | Create / Delete / Edit / List / View |
-| DataPoint | Create / Delete / Edit / List / History View / Push |
+| PRODUCT| Create / Delete / Edit / List / View |
+| DEVICE | Create / Delete / Edit / List / View |
+| SENSOR | Create / Delete / Edit / List / View |
+| DATAPOINT | Create / Delete / Edit / List / History View / Push |
 
 ## Prerequisites for Use
 
