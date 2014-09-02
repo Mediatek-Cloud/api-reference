@@ -15,7 +15,7 @@ LCloud also provides a web console to allow users to:
 
 LCloud services define Product, Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). Take a weather staion device as an example, the model hierarchy can be designed as below:
 
-<img src="https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/data-hirachy.JPG" width="200px"/>
+<img src="https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/data-hirachy.JPG" width="210px"/>
 
 
 The sequence of creating a weather station device is to:
