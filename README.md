@@ -13,14 +13,15 @@ LCloud also provides a web console to allow users to:
 
 > LCloud services are fully exposed as External RESTful Services API. LinkIt ONE and other devices capable of making RESTful API call can interact with LCloud.
 
-LCloud services define Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). The model hierarchy and example is depicted as below:
+LCloud services define Product, Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). The model hierarchy and example is depicted as below:
 
-![](https://documentation.mediatek.com/download/attachments/3409693/image2014-6-24%2010%3A32%3A1.png?version=1&modificationDate=1403577106000&api=v2)
+![](https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/01.JPG)
 
 The actions interacting to each model:
 
 | Object| Action|
 | --- | --- |
+| Product| Create / Delete / Edit / List / View |
 | Device | Create / Delete / Edit / List / View |
 | Sensor | Create / Delete / Edit / List / View |
 | DataPoint | Create / Delete / Edit / List / History View / Push |
