@@ -2,58 +2,111 @@
 
 ## Description
 
-Use HTTP GET to request for a sensor list
+Use **HTTP GET** to request for all sensor list within a specific device
 
-## Syntax
+### Request URL
 
-URL: http://v1.0/devices//sensors
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors
+```
 
-Qualifier description:
+### Action
+HTTP GET
 
-| Qualified|Mandatory| Type| Description|
-| --- | --- | --- | --- |
-|  | Yes | String | Device Id |
+### Parameters
 
-## Parameters
+#### Header
 
-### Header
+apiKey:`YOUR_API_KEY_HERE`
 
-apiKey:`YOUR\_API\_KEY\_HERE`
+### Response
 
-## Method
+#### Response Code
+200
 
-GET
+#### Response Header
 
-## Returns
+Content-Type:`application/json`
+#### Response Body
 
-**Format: JSON**
+***Data Format: JSON***
 
-returns a HTTP response with body text in JSON format, the fields return are:
+The response body will construct in JSON format with the following fields:
 
-|Field Name|Type |Description |
+| Field Name | Type |Description|
 | --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
-| sensor\_id | String | Sensor Id |
-| type | String | Sensor Type |
-| title | String | Sensor Name |
-| desc | String | Sensor Description |
+| sensorId | String | Sensor ID |
+| type | {Time-Value, Switch, GPS, Key-Value} | switch type |
+| title | String | Title |
+| desc | String | Description |
+| unit | String Array | For Time-Value sensors only|
+| location | JSON | For GPS sensors only |
+| updateAt | String | Last Device update Timestamp |
 
-## Example
+**Example: **
 
-**Sample JSON**
+Request URL
+```
+http://api.mediatek.com:80/api/v1.0/devices/100000009/sensors
+```
+Response Body
 
 ```
-{ "RC": 1000,{ "sensor_id": "12345", "type":"value", "title": "test01", "about": "sensor for testing"},{ "sensor_id": "12346", "type":"gps", "title": "test02", "about": "sensor for testing"}}
+{
+  "results": [
+    {
+      "sensorId": 1000000011,
+      "type": "Time-Value",
+      "title": "Humidity",
+      "desc": null,
+      "unit": "%",
+      "updatedAt": "2014-08-29T02:26:30.829Z"
+    },
+    {
+      "sensorId": 1000000012,
+      "type": "Time-Value",
+      "title": "Temperature",
+      "desc": "",
+      "unit": "degree C",
+      "updatedAt": "2014-08-29T02:26:47.488Z"
+    },
+    {
+      "sensorId": 1000000013,
+      "type": "Time-Value",
+      "title": "Pressure",
+      "desc": "",
+      "unit": "pa",
+      "updatedAt": "2014-08-29T02:27:02.358Z"
+    },
+    {
+      "sensorId": 1000000014,
+      "type": "Switch",
+      "title": "Fan",
+      "desc": "control GPIO",
+      "unit": null,
+      "updatedAt": "2014-08-29T03:09:19.392Z"
+    }
+  ]
+}
 ```
 
-## Authentication
+### Error Response
 
-Need to add API key in HTTP Header for authentication
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
 
-## Example (use of curl):
+| Field Name | Type |Description|
+| --- | --- | --- |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
 
+**Example: **
 ```
-$ Curl -request GET -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//sensors
+{
+    "results": {
+        "code": 1002,
+        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
+        "description": "You do not have access right to this API"
+    }
+}
 ```
-
-## See Also
