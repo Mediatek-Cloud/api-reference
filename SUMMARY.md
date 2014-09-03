@@ -7,6 +7,7 @@
    * [Delete](device/delete.md)
 * [Sensor](sensor/README.md)
    * [List](sensor/list.md)
+   * [View](sensor/view.md)
    * [Create](sensor/create.md)
    * [Edit](sensor/edit.md)
    * [Delete](sensor/delete.md)

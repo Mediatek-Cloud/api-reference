@@ -1,16 +1,17 @@
-# Device Delete
+# Sensor View
 
-### Description
+## Description
 
-Use **HTTP DELETE** to request for a specific device deletion
+Use **HTTP GET** for detail of a specific sensor of a specific device
 
 ### Request URL
+
 ```
-http://api.mediatek.com/api/v1.0/devices/{device_id}
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}
 ```
 
 ### Action
-HTTP DELETE
+HTTP GET
 
 ### Parameters
 
@@ -32,22 +33,35 @@ Content-Type:`application/json`
 
 The response body will construct in JSON format with the following fields:
 
-| Field Name | Type | Description |
+| Field Name | Type |Description|
 | --- | --- | --- |
-| results | Strings | resturns "success" only|
+| sensorId | String | Sensor ID |
+| type | {Time-Value, Switch, GPS, Key-Value} | switch type |
+| title | String | Title |
+| desc | String | Description |
+| unit | String Array | For Time-Value sensors only|
+| updateAt | String | Last Device update Timestamp |
 
-**Example:**
+**Example: **
 
 Request URL
 ```
-http://api.mediatek.com/api/v1.0/devices/100000012
+http://api.mediatek.com:80/api/v1.0/devices/100000009/sensors/1000000011
 ```
-
 Response Body
 
 ```
 {
-    "results": "success"
+  "results": [
+    {
+      "sensorId": 1000000011,
+      "type": "Time-Value",
+      "title": "Humidity",
+      "desc": null,
+      "unit": "%",
+      "updatedAt": "2014-08-29T02:26:30.829Z"
+    }
+  ]
 }
 ```
 
@@ -71,6 +85,4 @@ When error is incurred, the response code will be non-200 and the response body 
     }
 }
 ```
-
-
-
+# View

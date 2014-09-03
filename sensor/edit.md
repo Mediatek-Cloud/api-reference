@@ -2,100 +2,100 @@
 
 ## Description
 
-Use HTTP PUT to request for a sensor edit
+Use **HTTP PUT** to request for a specific sensor edit of a specific device
 
-## Syntax
 
-URL: http://v1.0/devices//sensors/
+### Request URL
 
-Qualifier description:
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}
+```
 
-| Qualified | Mandatory | Type | Description |
+### Action
+HTTP PUT
+
+### Parameters
+
+#### Header
+
+apiKey:`YOUR_API_KEY_HERE`
+
+#### Body
+
+***Data Format: JSON***
+
+|Field Name|Mandatory|Type|Description|
 | --- | --- | --- | --- |
-|  | Yes | String | Device Id |
-|  | Yes | String | Sensor Id |
-
-## Parameters
-
-### Header
-
-apiKey:`YOUR\_API\_KEY\_HERE`
-
-### Body
-
-**Data Format: JSON**
-
-There are three types of sensor: **Value** , **GPS** and **Generic** type:
-
-**Value Type Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-|Field Name|Mandatory|Type |Description |
-| --- | --- | --- | --- |
-| title | Yes | String | Sensor name |
+| title | No | String | Sensor name |
 | desc | No | String | Sensor description |
 | tags | No | Array | Sensor tags |
-| unit | No | JSON | name: string, symbol: string |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{ "title": "test01", "desc": "sensor for testing", "tags": ["sensor tag1", "sensor tag2"], "unit": { "name" : "temperature", "symbol" : "C"}}
-```
-
-**GPS and Generic Type Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-| Field Name | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-| title | Yes | String | Sensor name |
-| desc | No | String | Sensor description |
-| tags | No | Array | Sensor tags |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{ "title": "test01", "desc": "sensor for testing", "tags": ["sensor tag1", "sensor tag2"],}
-```
+| unit | No | String | unit of the value |
 
 Please note: Sensor type cannot be changed once created
 
-## Method
+###Example:
 
-PUT
+***Sample JSON***
 
-## Returns
+```
+{
+  "title": "Temperature Sensor 01",
+   "desc": "Temperature Sensor description",
+}
+```
 
-**Format: JSON**
+### Response
 
-returns a HTTP response with body text in JSON format, the fields return are:
+#### Response Code
+200
 
-| Field Name |Type | Description |
+#### Response Header
+
+Content-Type:`application/json`
+
+#### Response Body
+
+***Data Format: JSON***
+
+The response body will construct in JSON format with the following fields:
+
+| Field Name | Type | Description |
 | --- | --- | --- |
-| RC | Integer | Return Code |
+| results | Strings | resturns "success" only|
 
 **Example:**
 
-**Sample JSON**
-
+Request URL
 ```
-{ "RC" : 1000}
-```
-
-## Authentication
-
-Need to add API key in HTTP Header for authentication
-
-## Example (use of curl):
-
-```
-$ Curl -request PUT -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//
+http://api.mediatek.com/api/v1.0/devices/100000012/sensors/1000000027
 ```
 
-## See Also
+Response Body
+
+```
+{
+    "results": "success"
+}
+```
+
+### Error Response
+
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
+
+| Field Name | Type |Description|
+| --- | --- | --- |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
+
+**Example: **
+```
+{
+    "results": {
+        "code": 1002,
+        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
+        "description": "You do not have access right to this API"
+    }
+}
+```
+

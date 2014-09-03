@@ -1,56 +1,74 @@
 # Sensor Delete
 
-## Description
+### Description
 
-Use HTTP DELETE to request for a sensor deletion
+Use **HTTP DELETE** to request for a specific sensor of a device deletion
 
-## Syntax
+### Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}
+```
 
-URL: http://v1.0/devices//sensors/
+### Action
+HTTP DELETE
 
-Qualifier description:
+### Parameters
 
-| Qualified | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-|  | Yes | String | Device Id |
-|  | Yes | String | Sensor Id |
+#### Header
 
-## Parameters
+apiKey:`YOUR_API_KEY_HERE`
 
-### Header
+### Response
 
-apiKey:`YOUR\_API\_KEY\_HERE`
+#### Response Code
+200
 
-## Method
+#### Response Header
 
-DELETE
+Content-Type:`application/json`
+#### Response Body
 
-## Returns
+***Data Format: JSON***
 
-**Format: JSON**
-
-returns a HTTP response with body text in JSON format, the fields return are:
+The response body will construct in JSON format with the following fields:
 
 | Field Name | Type | Description |
 | --- | --- | --- |
-| RC | Integer | Return Code |
+| results | Strings | resturns "success" only|
 
-## Example
+**Example:**
 
-**Sample JSON**
-
+Request URL
 ```
-{ "RC" : 1000}
-```
-
-## Authentication
-
-Need to add API key in HTTP Header for authentication
-
-## Example (use of curl):
-
-```
-$ Curl -request DELETE -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//
+http://api.mediatek.com/api/v1.0/devices/100000012
 ```
 
-## See Also
+Response Body
+
+```
+{
+    "results": "success"
+}
+```
+
+### Error Response
+
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
+
+| Field Name | Type |Description|
+| --- | --- | --- |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
+
+**Example: **
+```
+{
+    "results": {
+        "code": 1002,
+        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
+        "description": "You do not have access right to this API"
+    }
+}
+```
+

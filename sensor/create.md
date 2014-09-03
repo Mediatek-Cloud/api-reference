@@ -1,124 +1,105 @@
 # Sensor Create
 
-## Description
+### Description
 
-Use HTTP POST to request for a sensor creation
+Use **HTTP POST** to request for a sensor creation on a specific device
 
-## Syntax
+### Request URL
 
-URL: http://v1.0/devices//sensors
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors
+```
 
-Qualifier description:
+### Action
+HTTP POST
 
-| Qualified | Mandator | Type| Description |
-| --- | --- | --- | --- |
-|  | Yes | String | Device\_id |
+### Parameters
 
-## Parameters
+#### Header
 
-### Header
+apiKey:`YOUR_API_KEY_HERE`
 
-apiKey:`YOUR\_API\_KEY\_HERE`
+#### Body
 
-### Body
+***Data Format: JSON***
 
-**Data Format: JSON**
-
-There are three types of sensor: **Value** , **GPS** and **Generic** type:
-
-**Value Type Sensor**
+There are four types of sensors can be defined: Time-Value, Switch, GPS, Key-Value
 
 The body construct should be in JSON format with the following fields:
 
 |Field Name|Mandatory|Type|Description|
 | --- | --- | --- | --- |
-| type | Yes | String | Sensor Type, set as "value" |
+| type | Yes | String | Sensor Type, set to one of the following:  "Time-Value", "Switch", "Key-Value", "GPS" |
 | title | Yes | String | Sensor name |
 | desc | No | String | Sensor description |
 | tags | No | Array | Sensor tags |
-| unit | No | JSON | name: string, symbol: string |
+| unit | No | String | unit of the value |
 
 #### Example:
 
-**Sample JSON**
-
+Request URL
 ```
-{ "type":"value", "title": "test01", "desc": "sensor for testing", "tags": ["sensor tag1", "sensor tag2"], "unit": { "name" : "temperature", "symbol" : "C"}}
-```
-
-**GPSType Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-|Field Name |Mandatory |Type |Description |
-| --- | --- | --- | --- |
-| type | Yes | String | Sensor Type, set as "gps" |
-| title | Yes | String | Sensor name |
-| desc | No | String | Sensor description |
-| tags | No | Array | Sensor tags |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{ "type":"gps", "title": "test01", "desc": "sensor for testing", "tags": ["sensor tag1", "sensor tag2"],}
+http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors
 ```
 
-**Generic** Type Sensor
-
-The body construct should be in JSON format with the following fields:
-
-|Field Name|Mandatory|Type|Description|
-| --- | --- | --- | --- |
-| type | Yes | String | Sensor Type, set as "gen" |
-| title | Yes | String | Sensor name |
-| desc | No | String | Sensor description |
-| tags | No | Array | Sensor tags |
-
-#### Example:
-
-**Sample JSON**
+Request Body
 
 ```
-{ "type":"gen", "title": "test01", "desc": "sensor for testing", "tags": ["sensor tag1", "sensor tag2"],}
+{
+  "type": "Time-Value",
+  "title": "Temperature Sensor example",
+  "desc": "Temperature Sensor description",
+  "unit": "Degree"
+}
 ```
 
-Please note: One or more sensors can be created under one single HTTP post under one specific device
+### Response
 
-## Method
+#### Response Code
+200
 
-POST
+#### Response Header
 
-## Returns
+Content-Type:`application/json`
+#### Response Body
 
-**Format: JSON**
+***Data Format: JSON***
 
-returns a HTTP response with body text in JSON format, the fields return are:
+The response body will construct in JSON format with the following fields:
 
-|Field Name |Type |Description |
+| Field Name | Type |Description|
 | --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
-| sensor\_id | String | Sensor ID |
+| results | Strings | resturns "success" only|
+| sensorId | String | created Sensor ID |
 
-**Example:**
-
-**Sample JSON**
+####Example:
 
 ```
-{ "RC" : 1000, "sensor_id": "12345"}
+{
+  "results": "success",
+  "sensorId": 1000000027
+}
 ```
 
-## Authentication
+### Error Response
 
-Need to add API key in HTTP Header for authentication
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
 
-## Example (use of curl):
+| Field Name | Type |Description|
+| --- | --- | --- |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
 
+**Example: **
 ```
-$ Curl -request POST -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices/
+{
+    "results": {
+        "code": 1002,
+        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
+        "description": "You do not have access right to this API"
+    }
+}
 ```
-
-## See Also
 
 
