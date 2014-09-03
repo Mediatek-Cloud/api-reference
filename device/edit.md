@@ -1,44 +1,49 @@
 # Device Edit
 
-## Description
+### Description
 
-Use HTTP PUT to request for a device edit
+Use **HTTP PUT** to request for a specific device edit
 
-## Syntax
+### Syntax
 
-URL: http://v1.0/devices/
+Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}
+```
 
-Qualifier description:
+### Parameters
 
-| Qualified | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-|  | Yes | String | Device\_id |
+####Header
 
-## Parameters
+apiKey:`YOUR_API_KEY_HERE`
 
-### Header
+####Body
 
-apiKey:`YOUR\_API\_KEY\_HERE`
-
-### Body
-
-**Data Format: JSON**
+***Data Format: JSON***
 
 The body construct should be in JSON format with the following fields:
 
 | Field Name | Mandatory | Type | Description |
 | --- | --- | --- | --- |
 | title | Yes | String | Device name |
-| desc | No | String | Device description |
+| desc | Yes | String | Device description |
 | tags | No | Array | Device tags |
 | location | No | JSON | geoname: string , latitude: float , longitude: float  |
 
-#### Example:
+###Example:
 
-**Sample JSON**
+***Sample JSON***
 
 ```
-{ "title": "test01", "desc": "device for testing", "tags": ["test01 lab", "temperature"], "location": { "geoname" : "office", "latitude" : "24.940225" "longitude" : "121.501913"}}
+{
+  "title": "test01",
+   "desc": "device for testing",
+   "tags": ["test01 lab", "temperature"],
+   "location": {
+                    "latitude" : "24.940225"
+                    "longitude" : "121.501913"
+                }
+}
 ```
 
 ### Method
@@ -75,4 +80,68 @@ $ Curl -request PUT -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_
 
 ## See Also
 
+-----------------------------
+# Device View
+
+## Description
+
+Use **HTTP GET** to request for a specific device detail
+
+## Syntax
+
+Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}
+```
+
+## Parameters
+
+### Header
+
+apiKey:`YOUR_API_KEY_HERE`
+
+## Response
+
+### Header
+
+Content-Type:`application/json`
+### Body
+
+**Data Format: JSON**
+
+The response body will construct in JSON format with the following fiedls:
+
+| Field Name | Type |Description|
+| --- | --- | --- |
+| deviceId | String | Device ID |
+| productId | String | Product ID |
+| title | String | Title |
+| desc | String | Description |
+| tags | String Array | tags |
+| location | JSON | Device geo-location |
+| updateAt | String | Last Device update Timestamp |
+
+**Example: **
+
+Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/100000009
+```
+Response Body
+
+```
+{
+  "results": {
+    "deviceId": 100000009,
+    "productId": "LI1000000009",
+    "title": "Linkit one Weather Station",
+    "desc": "With Humidity,Temperature and pressure sensor",
+    "tags": [],
+    "location": {},
+    "updatedAt": "2014-08-29T02:24:16.109Z"
+  }
+}
+```
+
+## See Also
 

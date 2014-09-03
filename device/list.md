@@ -1,39 +1,62 @@
-# MediaTek Cloud Sandbox API
+# Device View
 
-* * *
+### Description
 
-MediaTek Cloud Sandbox is an external Cloud Services to support LinkIt ONE development IoT devices to:
-- Push DataPoints from device to Cloud - eg. geo-location, temperature, humidity, switch-state...etc.
-- Pull DataPoints from Cloud to device - eg. simple switching, remote control..etc.
+Use **HTTP GET** to request for a specific device detail
 
-LCloud also provides a web console to allow users to:
+### Request URL
 
-- Manage for device and sensor profiles
-- Quick view on the DataPoint value over time chart for trends
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}
+```
 
-> LCloud services are fully exposed as External RESTful Services API. LinkIt ONE and other devices capable of making RESTful API call can interact with LCloud.
+### Parameters
 
-LCloud services define Product, Device, Sensor and DataPoint Model, all models created under the ownership of a single user (as a representation to a unique ApiKey). Take a weather staion device as an example, the model hierarchy can be designed as below:
+#### Header
 
-![](https://raw.githubusercontent.com/Mediatek-Cloud/api-reference/master/graphics/data-hirachy.JPG)
+apiKey:`YOUR_API_KEY_HERE`
 
-The sequence of creating a weather station device is to:
+### Response
 
-1. Define a **PRODUCT** namely "Weather Station Model 01".
-2. Once the PROUDCT is created, we can create **DEVICE** within this specific PRODUCT, the relationship between PRODUCT and DEVICE is one to many.
-3. Once a DEVICE is created, we can create **SENSOR** within this specific DEVICE, the relationship between DEVICE and SENSOR is one to many.
-4. For this specific example, we create four SENSORS with this device, SENSOR is the placeholder for **DATAPOINTS** which represents the actual data we wish to store or retrieve.
+#### Header
 
-The actions interacting to each model:
+Content-Type:`application/json`
+#### Body
 
-| Object| API Action|
-| --- | --- |
-| PRODUCT| API is currently not available, CRUD is done via MCS management console |
-| DEVICE | Create / Delete / Edit / List / View |
-| SENSOR | Create / Delete / Edit / List / View |
-| DATAPOINT | Create / Delete / Edit / List / History View / Push |
+***Data Format: JSON***
 
-## Prerequisites for Use
+The response body will construct in JSON format with the following fiedls:
 
-1. Users must be a MediaTek Development Network registered user.
-2. A registered and logged in user can access LCloud Sandbox Cloud console  to obtain its Apikey for RESTful Services access token.
+| Field Name | Type |Description|
+| --- | --- | --- |
+| deviceId | String | Device ID |
+| productId | String | Product ID |
+| title | String | Title |
+| desc | String | Description |
+| tags | String Array | tags |
+| location | JSON | Device geo-location |
+| updateAt | String | Last Device update Timestamp |
+
+**Example: **
+
+Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/100000009
+```
+Response Body
+
+```
+{
+  "results": {
+    "deviceId": 100000009,
+    "productId": "LI1000000009",
+    "title": "Linkit one Weather Station",
+    "desc": "With Humidity,Temperature and pressure sensor",
+    "tags": [],
+    "location": {},
+    "updatedAt": "2014-08-29T02:24:16.109Z"
+  }
+}
+```
+
+### See Also

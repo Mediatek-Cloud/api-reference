@@ -2,8 +2,7 @@
 
 * [Introduction](README.md)
 * [Device](device/README.md)
-   * [List](device/list.md)
-   * [Create](device/create.md)
+   * [View](device/list.md)
    * [Edit](device/edit.md)
    * [Delete](device/delete.md)
 * [Sensor](sensor/README.md)
