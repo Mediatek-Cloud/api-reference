@@ -2,97 +2,124 @@
 
 ## Description
 
-Use HTTP GET to request for a specific datapoint or the last datapoint entry
+Use **HTTP GET** request for DataPoint List for a specific sensor of a specific device
 
-## Syntax
+### Request URL
 
-**For a specific datapoint entry:**
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}/datapoints.{json/csv}?start={UnixTime}&end={UnixTime}&limit={limit}
+```
 
-URL: http://v1.0/devices//sensors//datapoints/
+### Action
+HTTP GET
 
-**For the last datapoint entry:**
+### Parameters
 
-URL: http://v1.0/devices//sensors//datapoints
+#### Header
 
-Qualifier description:
+apiKey:`YOUR_API_KEY_HERE`
 
-|Qualified |Mandatory |Type |Description |
-| --- | --- | --- | --- |
-|  | Yes | String | Device Id |
-|  | Yes | String | Sensor Id |
-|  | Yes | String | key or timestamp |
+### Response
 
-## Parameters
+#### Response Code
+200
 
-### Header
+#### Response Header
 
-apiKey:`YOUR\_API\_KEY\_HERE`
+Content-Type:`application/json`
+#### Response Body
 
-## Method
+***Data Format: JSON***
 
-GET
+The response body will construct in JSON format with the following fields:
 
-## Returns
-
-**Format: JSON**
-
-returns a HTTP response with body text in JSON format, the fields return are:
-
-**Value Type Sensor**
-
-|Field Name|Type |Description|
+| Field Name | Type |Description|
 | --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
-| value | float | value |
+| dataPointId | String | dataPoint ID |
+| updatedAt | String | Last Device update Timestamp |
+| sensorId | String | sensor ID |
+| content | json | dataPoint Value (vary by sensor type) |
 
-**Example:**
 
-**Sample JSON**
+**Example 1: Request for response in json **
+
+Request URL (request for response in json format)
+```
+http://api.mediatek.com:80/api/v1.0/devices/100000009/sensors/1000000011/datapoints.json
+```
+Response Body
 
 ```
-{ "RC" : 1000,"value":294.34}
+{
+  "results": [
+    {
+      "datapointId": "10000000111409281268924",
+      "updatedAt": "1409281268918",
+      "sensorId" : "1000000011",
+      "content": "{\"value\":\"58.49\"}"
+    },
+    {
+      "datapointId": "10000000111409281271853",
+      "updatedAt": "1409281271849",
+      "content": "{\"value\":\"58.55\"}"
+    }
+    ],
+  "count": 2
+}
 ```
+Please note, the maximum return datapoint is 30
 
-**GPS Type Sensor**
+**Example 2: Request for response in csv **
 
-|Field Name |Type |Description |
+Request URL (request for response in json format)
+```
+http://api.mediatek.com:80/api/v1.0/devices/100000009/sensors/1000000011/datapoints.csv
+```
+Response Body
+
+```
+10000000111409281268924,1000000011,1409281268918,58.49
+10000000111409281271853,1000000011,1409281271849,58.55
+```
+Please note, the maximum return datapoint is 30
+
+**Example 3: Request for response in given time range **
+
+Request URL (request for response in json format)
+```
+http://api.mediatek.com:80/api/v1.0/devices/100000009/sensors/1000000011/datapoints.csv?start=1409536800000&end=1409572800000
+```
+Please note, the unix time is in milliseconds, for human readable time conversion, please refer to http://www.epochconverter.com/
+
+Response Body
+
+```
+10000000111409536801906,1000000011,1409536801897,66.12
+10000000111409536805466,1000000011,1409536805459,66.15
+10000000111409536808863,1000000011,1409536808857,66.18
+.....etc
+```
+Please note, the maximum return datapoint is 30
+
+
+### Error Response
+
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
+
+| Field Name | Type |Description|
 | --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
-| value | JSON | Lat: float Latitude Lng: float Longtitude Spd: float Speed Offs: float offset |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
 
-**Example:**
-
-**Sample JSON**
-
+**Example: **
 ```
-{ "RC" : 1000,"value":294.34:{"lat":35.4567,"lng":46.1234,"spd":98.2}}
-```
-
-**Generic Type Sensor**
-
-|Field Name |Type |Description |
-| --- | --- | --- |
-| RC | Integer | Return Code |
-| value | self-define | value |
-
-**Example:**
-
-**Sample JSON**
-
-```
-{ "RC" : 1000,"value":"datalog 01"}
+{
+    "results": {
+        "code": 1002,
+        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
+        "description": "You do not have access right to this API"
+    }
+}
 ```
 
-
-
-## Authentication
-
-Need to add API key in HTTP Header for authentication
-
-## Example (use of curl):
-
-```
-$ Curl -request GET -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints/
-```
-
-## See Also

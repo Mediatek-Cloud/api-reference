@@ -13,6 +13,7 @@
    * [Delete](sensor/delete.md)
 * [Datapoint](datapoint/README.md)
    * [List](datapoint/list.md)
+   * [Last](datapoint/last.md)
    * [Create](datapoint/create.md)
    * [MultiCreate](datapoint/multicreate.md)
    * [Edit](datapoint/edit.md)
