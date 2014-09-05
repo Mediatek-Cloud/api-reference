@@ -39,12 +39,15 @@ The body construct should be in JSON format with the following fields:
 ```
 {
   "title": "test01",
-   "desc": "device for testing",
-   "tags": ["test01 lab", "temperature"],
-   "location": {
-                    "latitude" : "24.940225"
-                    "longitude" : "121.501913"
-                }
+  "desc": "device for testing",
+  "tags": [
+    "test01 lab",
+    "temperature"
+  ],
+  "location": {
+    "latitude": "24.940225",
+    "longitude": "121.501913"
+  }
 }
 ```
 
@@ -78,7 +81,7 @@ Response Body
 
 ```
 {
-    "results": "success"
+  "results": "success"
 }
 ```
 
@@ -95,11 +98,11 @@ When error is incurred, the response code will be non-200 and the response body 
 **Example: **
 ```
 {
-    "results": {
-        "code": 1002,
-        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
-        "description": "You do not have access right to this API"
-    }
+  "results": {
+    "code": 1002,
+    "url": "http:\\mcs.mediatek.com\api_errorcode?code=1002",
+    "description": "You do not have access right to this API"
+  }
 }
 ```
 

@@ -40,7 +40,7 @@ Please note: Sensor type cannot be changed once created
 ```
 {
   "title": "Temperature Sensor 01",
-   "desc": "Temperature Sensor description",
+  "desc": "Temperature Sensor description"
 }
 ```
 
@@ -91,11 +91,11 @@ When error is incurred, the response code will be non-200 and the response body 
 **Example: **
 ```
 {
-    "results": {
-        "code": 1002,
-        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
-        "description": "You do not have access right to this API"
-    }
+  "results": {
+    "code": 1002,
+    "url": "http:\\mcs.mediatek.com\api_errorcode?code=1002",
+    "description": "You do not have access right to this API"
+  }
 }
 ```
 

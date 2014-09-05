@@ -37,17 +37,56 @@ The body construct should be in JSON format with the following fields:
 
 Request URL
 ```
-http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors
+http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors/1000000025
 ```
 
 Request Body
 
+For Time-Value datapoint example:
 ```
 {
   "type": "Time-Value",
-  "title": "Temperature Sensor example",
-  "desc": "Temperature Sensor description",
-  "unit": "Degree"
+  "content": {
+    "time": 1409714629628,
+    "value": 20.3
+  }
+}
+```
+
+For GPS datapoint example:
+```
+{
+  "type": "GPS",
+  "content": {
+    "time": 1409714629628,
+    "latitude": 25.015228750967108,
+    "longtitude": 121.50960445404053
+
+  }
+}
+```
+For Switch datapoint example:
+```
+{
+  "type": "Switch",
+  "content": {
+    "time": 1409714629628,
+    "status": "on"
+  }
+}
+```
+Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format the milliseconds and is optional. If not provided, system will timestamp it at the time of receiving this datapoint creation request.
+
+
+For Key-Value datapoint example:
+
+```
+{
+  "type": "Key-Value",
+  "content": {
+    "key": "car_model",
+    "value": "Ford"
+  }
 }
 ```
 
@@ -68,14 +107,14 @@ The response body will construct in JSON format with the following fields:
 | Field Name | Type |Description|
 | --- | --- | --- |
 | results | Strings | resturns "success" only|
-| sensorId | String | created Sensor ID |
+| datapointId | String | created datapoint ID |
 
 ####Example:
 
 ```
 {
   "results": "success",
-  "sensorId": 1000000027
+  "datapointId": "10000000251409881841905"
 }
 ```
 
@@ -201,136 +240,11 @@ When error is incurred, the response code will be non-200 and the response body 
 **Example: **
 ```
 {
-    "results": {
-        "code": 1002,
-        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
-        "description": "You do not have access right to this API"
-    }
+  "results": {
+    "code": 1002,
+    "url": "http:\\mcs.mediatek.com\api_errorcode?code=1002",
+    "description": "You do not have access right to this API"
+  }
 }
 ```
-
-
-
-
----------------------------------------------------------
-
-
-# DataPoint Create
-
-## Description
-
-Use HTTP POST to request for a datapoint creation for a sensor
-
-## Syntax
-
-URL: http://v1.0/devices//sensors//datapoints
-
-Qualifier description:
-
-| Qualified | Mandatory | Type| Description|
-| --- | --- | --- | --- |
-|  | Yes | String | Device Id |
-|  | Yes | String | Sensor Id |
-
-## Parameters
-
-### Header
-
-apiKey:`YOUR\_API\_KEY\_HERE`
-
-### Body
-
-**Data Format: JSON**
-
-There are three types of sensor: **Value** , **GPS** and **Generic** type:
-
-**Value Type Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-| Field Name | Mandatory | Type | Description|
-| --- | --- | --- | --- |
-| timestamp | Yes | timestamp | Key (timestamp is expressed according to ISO 8601 format
-2014-06-10T13:52:43+00:00 |
-| value | Yes | float | value |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{"timestamp":"2014-03-15T16:13:14+08:00","value":294.34}
-```
-
-**GPS Type Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-| Field Name | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-| timestamp | Yes | timestamp | Key (timestamp is expressed according to ISO 8601 format
-2014-06-10T13:52:43+00:00 |
-| value | Yes | JSON | Lat: float Latitude Lng: float Longtitude Spd: float Speed Offs: float offset |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{"timestamp":"2014-03-15T16:13:14+08:00","value":{"lat":35.4567,"lng":46.1234,"spd":98.2}}{"timestamp":"2014-03-15T16:13:14+08:00","value":{"lat":35.4567,"lng":46.1234,"spd":98.2,"offs":"yes"}}
-```
-
-**Generic Type Sensor**
-
-The body construct should be in JSON format with the following fields:
-
-| Field Name | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-| key | Yes | String | Key, maximum 128 char |
-| value | Yes | Self-define | Self-define, maximum 1024 char |
-
-#### Example:
-
-**Sample JSON**
-
-```
-{"key":"ABCDEFG01","value":"data log 01"}
-```
-
-Please note: One or more DataPoints can be created in one single HTTP POST
-
-## Method
-
-POST
-
-## Returns
-
-**Format: JSON**
-
-returns a HTTP response with body text in JSON format, the fields return are:
-
-| Field Name | Type | Description |
-| --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
-
-**Example:**
-
-**Sample JSON**
-
-```
-{ "RC" : 1000}
-```
-
-## Authentication
-
-Need to add API key in HTTP Header for authentication
-
-## Example (use of curl):
-
-```
-$ Curl -request PUT -data-binary @datafile.txt -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints
-```
-
-
-## See Also
 

@@ -58,8 +58,12 @@ Response Body
     "productId": "LI1000000009",
     "title": "Linkit one Weather Station",
     "desc": "With Humidity,Temperature and pressure sensor",
-    "tags": [],
-    "location": {},
+    "tags": [
+
+    ],
+    "location": {
+
+    },
     "updatedAt": "2014-08-29T02:24:16.109Z"
   }
 }
@@ -78,11 +82,11 @@ When error is incurred, the response code will be non-200 and the response body 
 **Example: **
 ```
 {
-    "results": {
-        "code": 1002,
-        "url": "http://mcs.mediatek.com/api_errorcode?code=1002",
-        "description": "You do not have access right to this API"
-    }
+  "results": {
+    "code": 1002,
+    "url": "http:\\mcs.mediatek.com\api_errorcode?code=1002",
+    "description": "You do not have access right to this API"
+  }
 }
 ```
 
