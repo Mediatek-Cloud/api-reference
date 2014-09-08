@@ -7,7 +7,7 @@ Use **HTTP POST** to request for datapoint creation on a specific sensor of a sp
 ### Request URL
 
 ```
-http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}/datapoints.{json/csv}
 ```
 
 ### Action
@@ -37,13 +37,83 @@ The body construct should be in JSON format with the following fields:
 
 Request URL
 ```
-http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors/1000000025
+http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors/1000000025/datapoints.json
 ```
 
 Request Body
 
 For Time-Value datapoint example:
 ```
+{
+  "SensorId" : "1000000025",
+  "content": {
+    "time": 1409714629628,
+    "value": 20.3
+  }
+}
+```
+
+For GPS datapoint example:
+```
+{
+  "SensorId" : "1000000025",
+  "content": {
+    "time": 1409714629628,
+    "latitude": 25.015228750967108,
+    "longtitude": 121.50960445404053
+
+  }
+}
+```
+For Switch datapoint example:
+```
+{
+  "type": "Switch",
+  "content": {
+    "time": 1409714629628,
+    "status": "on"
+  }
+}
+```
+Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format the milliseconds and is optional. If not provided, system will generate timestamp at the time of receiving this API call.
+
+
+For Key-Value datapoint example:
+
+```
+{
+  "type": "Key-Value",
+  "content": {
+    "key": "car_model",
+    "value": "Ford"
+  }
+}
+```
+
+### Response
+
+#### Response Code
+200
+
+#### Response Header
+
+Content-Type:`application/json`
+#### Response Body
+
+***Data Format: CSV***
+
+#### Example:
+
+Request URL
+```
+http://api.mediatek.com:80/api/v1.0/devices/100000012/sensors/1000000025/datapoints.csv
+```
+
+Request Body
+
+For Time-Value datapoint example:
+```
+
 {
   "type": "Time-Value",
   "content": {
@@ -75,7 +145,7 @@ For Switch datapoint example:
   }
 }
 ```
-Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format the milliseconds and is optional. If not provided, system will timestamp it at the time of receiving this datapoint creation request.
+Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format the milliseconds and is optional. If not provided, system will generate timestamp at the time of receiving this API call.
 
 
 For Key-Value datapoint example:
@@ -88,26 +158,6 @@ For Key-Value datapoint example:
     "value": "Ford"
   }
 }
-```
-
-### Response
-
-#### Response Code
-200
-
-#### Response Header
-
-Content-Type:`application/json`
-#### Response Body
-
-***Data Format: JSON***
-
-The response body will construct in JSON format with the following fields:
-
-| Field Name | Type |Description|
-| --- | --- | --- |
-| results | Strings | resturns "success" only|
-| datapointId | String | created datapoint ID |
 
 ####Example:
 
