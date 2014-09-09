@@ -45,9 +45,10 @@ Request Body
 For Time-Value datapoint example:
 ```
 {
-  "Type" : "Time-Value",
+  "type" : "Time-Value",
+  "time": "1409714629628",
   "content": {
-    "time": 1409714629628,
+
     "value": 20.3
   }
 }
@@ -56,9 +57,9 @@ For Time-Value datapoint example:
 For GPS datapoint example:
 ```
 {
-  "Type" : "GPS",
+  "type" : "GPS",
+  "time": "1409714629628",
   "content": {
-    "time": 1409714629628,
     "latitude": 25.015228750967108,
     "longtitude": 121.50960445404053
 
@@ -69,8 +70,8 @@ For Switch datapoint example:
 ```
 {
   "type": "Switch",
+  "time": "1409714629628",
   "content": {
-    "time": 1409714629628,
     "status": "on"
   }
 }
