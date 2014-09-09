@@ -1,57 +1,74 @@
 # DataPoint Delete
 
-## Description
+### Description
 
-Use HTTP DELETE to request for a datapoint deletion
+Use **HTTP DELETE** to request for a specific DataPoint of a specific sensor of a specific device
 
-## Syntax
+### Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/{device_id}/sensors/{sensor_id}/datapoints/{datapoint_id}
+```
 
-URL: http://v1.0/devices//sensors//datapoints/
+### Action
+HTTP DELETE
 
-Qualifier description:
+### Parameters
 
-| Qualified | Mandatory | Type | Description |
-| --- | --- | --- | --- |
-|  | Yes | String | Device Id |
-|  | Yes | String | Sensor Id |
-|  | Yes | String | key or timestamp |
+#### Header
 
-## Parameters
+apiKey:`YOUR_API_KEY_HERE`
 
-### Header
+### Response
 
-apiKey:`YOUR\_API\_KEY\_HERE`
+#### Response Code
+200
 
-### Method
+#### Response Header
 
-DELETE
+Content-Type:`application/json`
+#### Response Body
 
-## Returns
+***Data Format: JSON***
 
-**Format: JSON**
-
-returns a HTTP response with body text in JSON format, the fields return are:
+The response body will construct in JSON format with the following fields:
 
 | Field Name | Type | Description |
 | --- | --- | --- |
-| RC | Integer | Return Codefour digit representation1000 : Normal1xxx : Warning2xxx : Error |
+| results | Strings | resturns "success" only|
 
 **Example:**
 
-**Sample JSON**
+Request URL
+```
+http://api.mediatek.com/api/v1.0/devices/100000012/sensors/1000000023/datapoints/10000000231410232501274
+```
+Please note: You may need to call List or Last DataPoint API to obtain DataPoint_id first
+
+Response Body
 
 ```
-{ "RC" : 1000}
+{
+    "results": "success"
+}
 ```
 
-## Authentication
+### Error Response
 
-Need to add API key in HTTP Header for authentication
+When error is incurred, the response code will be non-200 and the response body will construct in JSON format with the following fields:
 
-## Example (use of curl):
+| Field Name | Type |Description|
+| --- | --- | --- |
+| code | Integer | Error Code |
+| url | String | url to API Error detail page |
+| description | String | Error Description |
 
+**Example: **
 ```
-$ Curl -request DELETE -header "apiKey: YOUR\_API\_KEY\_HERE" http://v1.0/devices//datapoints/
+{
+  "results": {
+    "code": 1002,
+    "url": "http:\\mcs.mediatek.com\api_errorcode?code=1002",
+    "description": "You do not have access right to this API"
+  }
+}
 ```
-
-## See Also
