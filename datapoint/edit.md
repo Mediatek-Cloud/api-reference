@@ -28,7 +28,7 @@ apiKey:`YOUR_API_KEY_HERE`
 | --- | --- | --- | --- |
 | type | Yes | String | Sensor type |
 | time | No | String | timestamp |
-| content | No | json |  |
+| content | No | json |  | |
 
 Please note: Sensor type cannot be changed once created
 
