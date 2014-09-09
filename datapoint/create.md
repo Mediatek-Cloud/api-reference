@@ -29,7 +29,7 @@ The body construct should be in JSON format with the following fields:
 
 |Field Name|Mandatory|Type|Description|
 | --- | --- | --- | --- |
-| type | Yes | String | Sensor Type, set to one of the following:  "Time-Value", "Switch", "Key-Value", "GPS" |
+| time | No | String | Timestamp in unix-time format to milliseconds |
 | content | Yes | json |  | |
 
 
@@ -45,7 +45,6 @@ Request Body
 For Time-Value datapoint example:
 ```
 {
-  "type" : "Time-Value",
   "time": "1409714629628",
   "content": {
     "value": 20.3
@@ -56,33 +55,29 @@ For Time-Value datapoint example:
 For GPS datapoint example:
 ```
 {
-  "type" : "GPS",
   "time": "1409714629628",
   "content": {
     "latitude": 25.015228750967108,
     "longtitude": 121.50960445404053
-
   }
 }
 ```
 For Switch datapoint example:
 ```
 {
-  "type": "Switch",
   "time": "1409714629628",
   "content": {
     "status": "on"
   }
 }
 ```
-Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format the milliseconds and is optional. If not provided, system will generate timestamp at the time of receiving this API call.
+Please note, for "Time-Value", "GPS" and "Switch" datapoint, "time" is in unix-time format to milliseconds and is optional. If not provided, system will generate timestamp at the time of receiving this API call.
 
 
 For Key-Value datapoint example:
 
 ```
 {
-  "type": "Key-Value",
   "content": {
     "key": "car_model",
     "value": "Ford"

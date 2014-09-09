@@ -47,22 +47,22 @@ For placing 4 sensor datapoint in one API example:
 [
   {
     "sensorId": "1000000026",
+    "time": 1409714629628,
     "content": {
-      "time": 1409714629628,
       "value": 20.3
     }
   },
   {
     "sensorId": "1000000023",
+    "time": 1409714629628,
     "content": {
-      "time": 1409714629628,
       "status": "on"
     }
   },
   {
     "sensorId": "1000000024",
+    "time": 1409714629628,
     "content": {
-      "time": 1409714629628,
       "latitude": 25.015228750967,
       "longtitude": 121.50960445404
     }
