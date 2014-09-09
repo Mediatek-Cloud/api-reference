@@ -48,7 +48,6 @@ For Time-Value datapoint example:
   "type" : "Time-Value",
   "time": "1409714629628",
   "content": {
-
     "value": 20.3
   }
 }
