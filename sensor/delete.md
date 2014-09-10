@@ -17,6 +17,7 @@ HTTP DELETE
 #### Header
 
 apiKey:`YOUR_API_KEY_HERE`
+Content-Type:application/json
 
 ### Response
 
