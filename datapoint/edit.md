@@ -25,10 +25,9 @@ apiKey:`YOUR_API_KEY_HERE`
 ***Data Format: JSON***
 
 |Field Name|Mandatory|Type|Description|
-| --- | --- | --- | --- |
-| type | Yes | String | Sensor type |
+| --- | --- | --- | --- ||
 | time | No | String | timestamp |
-| content | No | json |  | |
+| content | Yes | json |  | |
 
 Please note: Sensor type cannot be changed once created
 
@@ -38,7 +37,6 @@ Please note: Sensor type cannot be changed once created
 
 ```
 {
-  "type": "Time-Value",
   "content": {
      "value": 22.3
   }
