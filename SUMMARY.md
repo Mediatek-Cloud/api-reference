@@ -14,6 +14,8 @@
 * [Datapoint](datapoint/README.md)
    * [List](datapoint/list.md)
    * [Last](datapoint/last.md)
+       * [Last (Sensor Level)](datapoint/last_sensor_level.md)
+       * [Last (Device Level)](datapoint/last_device_level.md)
    * [Create](datapoint/create.md)
    * [MultiCreate](datapoint/multicreate.md)
    * [Edit](datapoint/edit.md)
